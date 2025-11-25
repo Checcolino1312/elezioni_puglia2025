@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ripartizione Seggi Elezioni Regionali</title>
+    <link rel="stylesheet" href="merge.css">
+</head>
+<body>
+    <header>
+        <h1>Ripartizione Seggi Elezioni Regionali</h1>
+        <p class="subtitle">Calcolo automatico con metodo D'Hondt - 50 seggi totali</p>
+    </header>
+
+    <main>
+        <div class="container">
+            <div id="loading" class="loading">
+                Caricamento CSV delle province in corso...
+            </div>
+
+            <div id="error" class="error" style="display: none;"></div>
+
+            <div id="results-section" style="display: none;">
+                <h2>Ripartizione Completa</h2>
+
+                <div class="view-controls">
+                    <button id="export-csv-btn" class="btn-secondary">Esporta CSV</button>
+                </div>
+
+                <div id="results-container"></div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>Ripartizione Seggi Elezioni Regionali 2025 - Metodo D'Hondt</p>
+        <p class="footer-info">Province: Bari, BAT, Brindisi, Foggia, Lecce, Taranto</p>
+    </footer>
+
+    <script src="merge.js"></script>
+</body>
+</html>

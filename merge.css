@@ -1,0 +1,478 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    color: #333;
+}
+
+header {
+    background: white;
+    padding: 2rem;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+header h1 {
+    color: #667eea;
+    margin-bottom: 0.5rem;
+    font-size: 2rem;
+}
+
+.subtitle {
+    color: #666;
+    font-size: 1rem;
+}
+
+.container {
+    max-width: 1400px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+
+.actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.btn-primary, .btn-secondary, .btn-danger {
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    font-weight: bold;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+}
+
+.btn-secondary {
+    background: #f0f0f0;
+    color: #333;
+}
+
+.btn-secondary:hover {
+    background: #e0e0e0;
+}
+
+.btn-danger {
+    background: #d32f2f;
+    color: white;
+}
+
+.btn-danger:hover {
+    background: #b71c1c;
+}
+
+.loading, .error {
+    text-align: center;
+    padding: 2rem;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    margin-bottom: 2rem;
+}
+
+.error {
+    color: #d32f2f;
+}
+
+#results-section {
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+#results-section h2 {
+    color: #667eea;
+    margin-bottom: 1.5rem;
+    font-size: 1.8rem;
+}
+
+.view-controls {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.view-btn {
+    padding: 0.8rem 1.5rem;
+    border: 2px solid #667eea;
+    background: white;
+    color: #667eea;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.95rem;
+    transition: all 0.3s;
+}
+
+.view-btn.active {
+    background: #667eea;
+    color: white;
+}
+
+.view-btn:hover {
+    background: #667eea;
+    color: white;
+}
+
+.filter-section {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+}
+
+#search-filter {
+    flex: 1;
+    min-width: 250px;
+    padding: 0.8rem;
+    border: 2px solid #e0e0e0;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+}
+
+#search-filter:focus {
+    outline: none;
+    border-color: #667eea;
+}
+
+#sort-by {
+    padding: 0.8rem 1.5rem;
+    border: 2px solid #e0e0e0;
+    border-radius: 5px;
+    font-size: 1rem;
+    background: white;
+    cursor: pointer;
+    transition: border-color 0.3s;
+}
+
+#sort-by:focus {
+    outline: none;
+    border-color: #667eea;
+}
+
+.summary-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.stat-card {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 1.5rem;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.stat-card h3 {
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+    opacity: 0.9;
+}
+
+.stat-card .value {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.results-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+    overflow-x: auto;
+    display: block;
+}
+
+.results-table table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.results-table th,
+.results-table td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.results-table th {
+    background: #f9f9f9;
+    color: #667eea;
+    font-weight: bold;
+    position: sticky;
+    top: 0;
+}
+
+.results-table tr:hover {
+    background: #f9f9f9;
+}
+
+.results-table .candidato-nome {
+    font-weight: bold;
+    color: #333;
+}
+
+.results-table .lista-nome {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.results-table .voti-cell {
+    font-weight: bold;
+    color: #667eea;
+    text-align: right;
+}
+
+.results-table .percentuale-cell {
+    text-align: right;
+    color: #764ba2;
+}
+
+.results-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1rem;
+}
+
+.result-card {
+    background: #f9f9f9;
+    border-left: 4px solid #667eea;
+    padding: 1.5rem;
+    border-radius: 8px;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.result-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.result-card h3 {
+    color: #667eea;
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+}
+
+.result-card .candidato-info {
+    margin-bottom: 1rem;
+}
+
+.result-card .lista-badge {
+    display: inline-block;
+    background: #667eea;
+    color: white;
+    padding: 0.3rem 0.8rem;
+    border-radius: 15px;
+    font-size: 0.85rem;
+    margin-bottom: 1rem;
+}
+
+.result-card .voti-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.result-card .voti-label {
+    font-weight: bold;
+    color: #666;
+}
+
+.result-card .voti-value {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #667eea;
+}
+
+.result-card .circoscrizioni-list {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid #e0e0e0;
+}
+
+.result-card .circoscrizione-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem 0;
+    font-size: 0.9rem;
+}
+
+.result-card .circoscrizione-nome {
+    color: #666;
+}
+
+.result-card .circoscrizione-voti {
+    font-weight: bold;
+    color: #333;
+}
+
+footer {
+    background: white;
+    padding: 1.5rem;
+    text-align: center;
+    margin-top: 3rem;
+    color: #666;
+}
+
+footer p {
+    margin: 0.3rem 0;
+}
+
+.footer-info {
+    font-size: 0.9rem;
+    color: #999;
+}
+
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 1.5rem;
+    }
+
+    .file-input-row {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .actions {
+        flex-direction: column;
+    }
+
+    .btn-primary, .btn-secondary, .btn-danger {
+        width: 100%;
+    }
+
+    .results-table {
+        font-size: 0.85rem;
+    }
+
+    .results-table th,
+    .results-table td {
+        padding: 0.5rem;
+    }
+
+    .stat-card .value {
+        font-size: 1.5rem;
+    }
+}
+
+/* Stili tabelle Excel */
+.ripartizione-completa {
+    width: 100%;
+}
+
+.ripartizione-completa h3 {
+    color: #667eea;
+    margin: 2rem 0 1rem 0;
+    font-size: 1.3rem;
+    border-bottom: 2px solid #667eea;
+    padding-bottom: 0.5rem;
+}
+
+.section-spacer {
+    height: 2rem;
+}
+
+.excel-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    background: white;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    font-size: 0.95rem;
+}
+
+.excel-table thead {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+}
+
+.excel-table th {
+    padding: 1rem;
+    text-align: left;
+    font-weight: bold;
+    border: 1px solid #ddd;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.excel-table td {
+    padding: 0.8rem 1rem;
+    border: 1px solid #ddd;
+}
+
+.excel-table tbody tr:nth-child(even) {
+    background: #f9f9f9;
+}
+
+.excel-table tbody tr:hover {
+    background: #f0f4ff;
+}
+
+.excel-table .provincia-nome,
+.excel-table .coalizione-nome,
+.excel-table .partito-nome {
+    font-weight: bold;
+    color: #333;
+}
+
+.excel-table .numero {
+    text-align: right;
+    font-family: 'Courier New', monospace;
+}
+
+.excel-table .seggi {
+    background: #fff3cd;
+    font-weight: bold;
+    color: #856404;
+}
+
+.coalizioni-table td:first-child {
+    background: #e3f2fd;
+}
+
+.partiti-table td:first-child {
+    background: #f3e5f5;
+}
+
+@media print {
+    .upload-section,
+    .view-controls,
+    footer {
+        display: none;
+    }
+
+    .excel-table {
+        font-size: 0.8rem;
+        page-break-inside: auto;
+    }
+
+    .excel-table tr {
+        page-break-inside: avoid;
+        page-break-after: auto;
+    }
+}
